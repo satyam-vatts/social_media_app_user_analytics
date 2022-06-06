@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+</head>
+<body>
+<H1>
+This is a Test
+    </H1>
+<br/>
+<h2>
+User 1 Data is {{ user1 }}
+    </h2>
+<br>
+<h3>
+User 2 Data is {{ user2 }}
+    </h3>
+<br>
+<h4>
+    User 3 Data is {{ user3 }}
+        </h4>
+    <br>
+
+<h5>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="instagramPie" width="400" height="400"></canvas>
+    <canvas id="twitterPie" width="400" height="400"></canvas>
+</h5>
+
+</body>
+<script>
+
+// Calculate percentage for Instagram users
+var instaP = Math.round(users_with_instagram*100/total_users);
+var non_instaP = Math.round(non_insta_users*100/total_users);
+
+// Calculate percentage for Twitter users
+var twitterP = Math.round(users_with_twitter*100/total_users);
+var non_twitterP = Math.round(non_twitter_users*100/total_users);
+
+// Pie Chart for Instagram Accounts
+const ctxInsta = document.getElementById('instagramPie').getContext('2d');
+const instagramPie = new Chart(ctxInsta, {
+    type: 'pie',
+    data: {
+        labels: ['Instagram User '+instaP+'%', 'Non-Instagram User '+instaP+'%'],
+        datasets: [{
+            label: 'Connected Instagram Accounts',
+            data: [instaP, non_instaP],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+});
+
+// Pie Chart for Twitter Accounts
+const ctxTwitter = document.getElementById('twitterPie').getContext('2d');
+const twitterPie = new Chart(ctxTwitter, {
+    type: 'pie',
+    data: {
+        labels: ['Twitter User '+instaP+'%', 'Non-Twitter User '+instaP+'%'],
+        datasets: [{
+            label: 'Connected Twitter Accounts',
+            data: [twitterP, non_twitterP],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+});
+
+</script>
+</html>

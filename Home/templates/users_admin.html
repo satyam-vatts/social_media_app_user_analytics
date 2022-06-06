@@ -1,0 +1,126 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Rogue Media | User
+Admin {% endblock %} {% block additional_stylesheets %}
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
+<link href="{% static 'css/User_Profile.css' %}" rel="stylesheet" />
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="my-5">
+        <h1>User Admin</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-11">
+      <div class="card">
+        <div class="card-body">
+          <form class="row justify-content-md-center mb-0">
+            <div class="col-md-8 pr-sm-0 mb-3 mb-md-0">
+              <input
+                class="form-control mr-sm-2"
+                type="text"
+                name="q"
+                placeholder="Search User"
+                aria-label="Search"
+                aria-describedby="basic-addon2"
+              />
+            </div>
+            <div class="col-md-2 pl-sm-0 text-center">
+              <button
+                class="btn btn-outline-success my-2 my-sm-0"
+                type="submit"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+          {% for user in users %}
+            <div class="row mt-5 border-bottom">
+              <div class="col-12 col-md text-center mb-3">
+                <img
+                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+                  class="rounded-circle profile-image"
+                  alt="Cinque Terre"
+                />
+              </div>
+              <div
+                class="
+                  col-12 col-md-3
+                  d-flex
+                  align-items-center
+                  justify-content-center justify-content-md-start
+                "
+              >
+                <div class="text-center text-md-left">
+                  <h4 class="mb-0">{{ user.name }}</h4>
+                  <p class="text-muted mb-0">
+                    <small>
+                      @{{ user.username }}{% if user.invited_by_user_profile != "null" %}| Invited by {{ user.invited_by_user_profile }} {% endif %}
+                    </small>
+                  </p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <h6 class="mb-0">123</h6>
+                  <p class="text-muted mb-0"><small>Followers</small></p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <h6 class="mb-0">123</h6>
+                  <p class="text-muted mb-0"><small>Following</small></p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <h6 class="mb-0">12 April 2020</h6>
+                  <p class="text-muted mb-0"><small>Member Since</small></p>
+                </div>
+              </div>
+              <div
+                class="
+                  col-12 col-md
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  my-3
+                  mb-md-0
+                "
+              >
+                <div class="text-center">
+                  {% if user.instagram == "null" %}
+                  <button class="btn btn-outline-dark mx-1" disabled>
+                    <i class="fa fa-instagram fa-1x"></i>
+                  </button>
+                  {% else %}
+                  <a href="https://instagram.com/{{ user.instagram }}">
+                    <button class="btn btn-outline-danger mx-1">
+                      <i class="fa fa-instagram fa-1x"></i>
+                    </button>
+                  </a>
+                  {% endif %} {% if user.twitter == "null" %}
+                  <button class="btn btn-outline-dark mx-1" disabled>
+                    <i class="fa fa-twitter fa-1x"></i>
+                  </button>
+                  {% else %}
+                  <a href="https://twitter.com/{{ user.twitter }}/">
+                    <button class="btn btn-outline-primary mx-1">
+                      <i class="fa fa-twitter fa-1x"></i>
+                    </button>
+                  </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

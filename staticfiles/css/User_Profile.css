@@ -1,0 +1,10 @@
+.profile-image {
+  max-height: 100px;
+}
+
+@media (min-width: 767.98px) {
+  .profile-image {
+    max-height: auto;
+    height: 100%;
+  }
+}
